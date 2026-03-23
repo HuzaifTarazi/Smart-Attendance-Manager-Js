@@ -6,7 +6,8 @@ const tableBody = document.getElementById("tableBody")
 const totalStudents = document.getElementById("totalStudents")
 let presentCount = document.getElementById("presentCount")
 let absentCount = document.getElementById("absentCount")
-let tempNumber = 1
+let attendancePercent = document.getElementById("attendancePercent")
+
 let studentDataArr = []
 
 class SmartAttendanceManager {
@@ -20,7 +21,7 @@ function ShowStudentsData() {
 
     tableBody.innerHTML = ``
     totalStudents.textContent = studentDataArr.length
-
+    
     const presentStudents = studentDataArr.filter((element) => {
         return element.isPresent === true
     })
@@ -29,10 +30,14 @@ function ShowStudentsData() {
         return element.isPresent === false
     })
 
-
     presentCount.textContent = presentStudents.length
     absentCount.textContent = absentStudents.length
+
+    const percentageCal = Math.floor((presentStudents.length / studentDataArr.length) * 100)
+
+    attendancePercent.textContent = `${percentageCal}%` 
     
+
     const errorTrElement = document.createElement("tr")
     if (studentDataArr.length === 0) {
         errorTrElement.innerHTML = `<tr class="empty" id="emptyitem"><td colspan="4">No students added yet</td></tr>`
