@@ -3,7 +3,9 @@
 const studentInput = document.getElementById("studentInput")
 const addStudentBtn = document.getElementById("addStudentBtn")
 const tableBody = document.getElementById("tableBody")
-
+const totalStudents = document.getElementById("totalStudents")
+let presentCount = document.getElementById("presentCount")
+let tempNumber = 1
 let studentDataArr = []
 
 class SmartAttendanceManager {
@@ -16,6 +18,7 @@ class SmartAttendanceManager {
 function ShowStudentsData() {
 
     tableBody.innerHTML = ``
+    totalStudents.textContent = studentDataArr.length
 
     const errorTrElement = document.createElement("tr")
     if (studentDataArr.length === 0) {
@@ -26,33 +29,34 @@ function ShowStudentsData() {
     }
 
     studentDataArr.forEach((element, index) => {
-
         const newTrElement = document.createElement("tr")
         newTrElement.innerHTML = `<td>${element.studentName}</td>
                                     <td class="display-position">
                                         <select class="list-items" name="status" id="attendanceStatus">
-                                            <option value="present"}>P</option>
-                                            <option value="absent">A</option>
+                                            <option value="present" ${element.isPresent ? "selected" : ""}>P</option>
+                                            <option value="absent" ${!element.isPresent ? "selected" : ""}>A</option>
                                         </select>
                                     </td>
-                                    <td><input class="toggle-btn"  type="checkbox" id="toggleBtn" name="toggleBtn" data-index= ${index} ></td>
+                                    <td><input class="toggle-btn"  type="checkbox" id="toggleBtn" name="toggleBtn" data-index= ${index} ${element.isPresent ? "checked" : ""}></td>
                                     <td><input class="delete-btn" type="button" id="delBtn" value="DEL" data-index=${index} ></td>`
         tableBody.appendChild(newTrElement)
-
     });
-
 }
-
 
 addStudentBtn.onclick = () => {
 
     const fetchValue = studentInput.value
     const studentData = new SmartAttendanceManager(fetchValue)
-    studentDataArr.push(studentData)
-    studentInput.value = ``
-    ShowStudentsData()
-    console.log(studentDataArr)
+    const nameRegex = /^[A-Za-z ]+$/;
 
+    if (typeof studentData.studentName === "undefined" || !nameRegex.test(studentData.studentName)) {
+        alert("Please Enter Student Name Correctly..!")
+    } else {
+        studentDataArr.push(studentData)
+        studentInput.value = ``
+    }
+
+    ShowStudentsData()
 
 }
 
@@ -61,6 +65,7 @@ tableBody.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-btn")) {
         const deletion = e.target.dataset.index
         studentDataArr.splice(deletion, 1)
+
         ShowStudentsData()
         return
     }
@@ -70,4 +75,6 @@ tableBody.addEventListener("click", (e) => {
         studentDataArr[toggleSelect].isPresent = e.target.checked
         console.log(e)
     }
+
 })
+
