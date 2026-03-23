@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2a5298;
+}
+
+/* Input Section */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #2a5298;
+}
+
+.input-group button {
+  padding: 12px 18px;
+  border: none;
+  background: #2a5298;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.input-group button:hover {
+  background: #1e3c72;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stat-card {
+  flex: 1;
+  background: #f5f7fa;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+  color: #2a5298;
+  margin-bottom: 5px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #2a5298;
+  color: white;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: 0.2s;
+}
+
+tbody tr:hover {
+  background: #f1f5ff;
+}
+
+/* Buttons */
+.toggle-btn {
+  accent-color: #2a5298;
+  border: none;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 18px;
+  height: 18px;
+}
+
+.toggle-btn.absent {
+  background: #dc3545;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: #cc0000;
+}
+
+/* Status Colors */
+.present {
+  color: green;
+  font-weight: bold;
+}
+
+.absent {
+  color: red;
+  font-weight: bold;
+}
+
+/* Empty State */
+.empty {
+  text-align: center;
+  padding: 15px;
+  color: #888;
+}
+
+.list-items {
+  width: 50px;
+  font-size: 14px;
+  border: 1px solid rgb(36, 36, 36);
+  border-radius: 3px;
+  text-align: left;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Attendance Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📋 Smart Attendance Manager</h1>
+        <!-- Input -->
+        <div class="input-group">
+            <input type="text" id="studentInput" placeholder="Enter student name...">
+            <button id="addStudentBtn">Add</button>
+        </div>
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total</h3>
+                <p id="totalStudents">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Present</h3>
+                <p id="presentCount">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Absent</h3>
+                <p id="absentCount">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Attendance %</h3>
+                <p id="attendancePercent">0%</p>
+            </div>
+        </div>
+        <!-- Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Toggle</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr class="empty" id="emptyitem">
+                    <td colspan="4">No students added yet</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
