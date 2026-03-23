@@ -35,6 +35,7 @@ function ShowStudentsData() {
 
     const percentageCal = Math.floor((presentStudents.length / studentDataArr.length) * 100)
 
+   
     attendancePercent.textContent = `${percentageCal}%` 
     
 
@@ -43,6 +44,7 @@ function ShowStudentsData() {
         errorTrElement.innerHTML = `<tr class="empty" id="emptyitem"><td colspan="4">No students added yet</td></tr>`
         tableBody.appendChild(errorTrElement)
         errorTrElement.style.color = `gray`
+        attendancePercent.textContent = `0%`
         return
     }
 
