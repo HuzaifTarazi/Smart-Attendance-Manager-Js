@@ -5,6 +5,7 @@ const addStudentBtn = document.getElementById("addStudentBtn")
 const tableBody = document.getElementById("tableBody")
 const totalStudents = document.getElementById("totalStudents")
 let presentCount = document.getElementById("presentCount")
+let absentCount = document.getElementById("absentCount")
 let tempNumber = 1
 let studentDataArr = []
 
@@ -20,6 +21,18 @@ function ShowStudentsData() {
     tableBody.innerHTML = ``
     totalStudents.textContent = studentDataArr.length
 
+    const presentStudents = studentDataArr.filter((element) => {
+        return element.isPresent === true
+    })
+
+    const absentStudents = studentDataArr.filter((element) => {
+        return element.isPresent === false
+    })
+
+
+    presentCount.textContent = presentStudents.length
+    absentCount.textContent = absentStudents.length
+    
     const errorTrElement = document.createElement("tr")
     if (studentDataArr.length === 0) {
         errorTrElement.innerHTML = `<tr class="empty" id="emptyitem"><td colspan="4">No students added yet</td></tr>`
@@ -52,6 +65,8 @@ addStudentBtn.onclick = () => {
     if (typeof studentData.studentName === "undefined" || !nameRegex.test(studentData.studentName)) {
         alert("Please Enter Student Name Correctly..!")
     } else {
+
+
         studentDataArr.push(studentData)
         studentInput.value = ``
     }
@@ -65,7 +80,6 @@ tableBody.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-btn")) {
         const deletion = e.target.dataset.index
         studentDataArr.splice(deletion, 1)
-
         ShowStudentsData()
         return
     }
@@ -73,7 +87,8 @@ tableBody.addEventListener("click", (e) => {
     if (e.target.classList.contains("toggle-btn")) {
         const toggleSelect = e.target.dataset.index
         studentDataArr[toggleSelect].isPresent = e.target.checked
-        console.log(e)
+        ShowStudentsData()
+        return
     }
 
 })
