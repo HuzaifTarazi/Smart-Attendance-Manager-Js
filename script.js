@@ -21,7 +21,7 @@ function ShowStudentsData() {
 
     tableBody.innerHTML = ``
     totalStudents.textContent = studentDataArr.length
-    
+
     const presentStudents = studentDataArr.filter((element) => {
         return element.isPresent === true
     })
@@ -35,9 +35,7 @@ function ShowStudentsData() {
 
     const percentageCal = Math.floor((presentStudents.length / studentDataArr.length) * 100)
 
-   
-    attendancePercent.textContent = `${percentageCal}%` 
-    
+    attendancePercent.textContent = `${percentageCal}%`
 
     const errorTrElement = document.createElement("tr")
     if (studentDataArr.length === 0) {
